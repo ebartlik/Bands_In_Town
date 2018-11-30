@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+    <head>
+        <meta charset"UTF-8">
+        <title>BEERS and BANDS</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+        <!-- Custom Stylesheet -->
+
+        
+        <link rel="stylesheet" href="assets/style.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Anton|New+Rocker|Rock+Salt" rel="stylesheet">
+         <!-- JQuery -->
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <!-- popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
+        <!-- Custom Javascript -->
+        <script src="assets/script.js"></script>
+
+
+    </head>
+    
+    <body>
+            
+        <div class="container">
+                
+            <div class="jumbotron">
+                    <h1 class="display-4">BEERS AND BANDS</h1> 
+                   
+                  </div>
+                  <form>
+                        <div class="form-group">
+                          <label for="artist">Type in an Artist</label>
+                          <input type="text" class="form-control" id="artist" />
+                          <!-- <small id="locationHelp" class="form-text text-muted"></small> -->
+                        </div>
+                      </form>
+
+                      <input type="button" id="letsRock" value="Let's Rock">
+
+
+                      <div class="row">
+                          <div class="col-4">
+                              <div class="beer-holder">
+                               
+                                  
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                            <div class="col-4">
+                                <div class="map-holder">
+                                    <iframe
+                                    width="600"
+                                    height="450"
+                                    frameborder="0" style="border:0"
+                                    id="google-map"
+                                    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBbmoAi4qVWUugXB3-QpKR_kdAhtalKGI4
+                                      &q=Beer+In+Jersey+City+NJ" allowfullscreen>
+                                    </iframe>
+  
+                                </div>
+                            </div>
+                        </div>
+
+                      <div class="row">
+                          <div class="col-4">
+                              <div class="band-holder">
+                                  
+                                  
+                              </div>
+                          </div>
+
+                      </div>
+
+        </div>
+
+
+            </div>
+
+    </body>
+</html>
