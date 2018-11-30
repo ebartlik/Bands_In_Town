@@ -2,8 +2,15 @@
 body{
     background: url(C:\Users\susha\Desktop\Class_Stuff\Class_Projects\Project1\Beers_Bands\assets/stadium.jpg) no-repeat;
     background: url(../assets/images/stadium.jpg) no-repeat;
-    background-size: 1450px;
-    
+    background-size: 205vw;
+    background-attachment: fixed;
+}
+
+body{
+    background: url(C:\Users\susha\Desktop\Class_Stuff\Class_Projects\Project1\Beers_Bands\assets/stadium.jpg) no-repeat;
+    background: url(../assets/images/stadium.jpg) no-repeat;
+    background-size: 205vw;
+    background-attachment: fixed;
 }
 
 
@@ -11,29 +18,25 @@ body{
     background-color: white;
     border: 4px;
     border-radius: 20px;
-
-
     margin-top: 50px;
 }
 
 h1{
     text-align: center;
     font-family: 'New Rocker', cursive;
-    color:white;
+    color: black;
     text-shadow: 4px 4px 4px #aaa;
 }
 
 input {
-
     border-radius: 5px;
-
     text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Arial, Helvetica, sans-serif;
     
 }
 
 
-.form-group{
+.form-group, .selected-venue {
     text-align: center;
     font-family: 'Rock Salt', cursive;
     color: white;
@@ -48,23 +51,12 @@ input {
 
 
 #letsRock {
-    margin-left: 500px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-    
-    
+    margin-left: 120px;    
 }
 
-.map-holder {
-    margin-left: 240px;
-    margin-top: 20px;
-    float: left;
-}
-
-.map-holder {
-    margin-left: 240px;
-    margin-top: 20px;
-    float: left;
+.column {
+    margin: auto;
+    padding: 20px;
 }
 
 .jumbotron{
@@ -72,257 +64,26 @@ input {
     
 }
 
- #concert-buttonOne{
+ .venue-btn{
   display: inline-block;
   margin: 0 10px 10px 0;
   padding: 15px 45px;
   font-size: 16px;
-  font-family: Helvetica;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.8;
   border-color: #27496d;
 } 
 
-#concert-buttonOne:hover {
-    background-color: #346392;
-    text-shadow: -1px 1px #27496d;
-    font-family: 'New Rocker', cursive;
+.venue-btn:hover {
+    /* background-color: lightgray; */
+    text-shadow: -1px 1px darkslategray;
+    font-family: Arial, Helvetica, sans-serif;
     
 }
 
-#concert-buttonOne:active {
-    background-color: red;
+.venue-btn:active {
+    background-color: lightgray;
 } 
-#concert-buttonTwo{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonTwo:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonTwo:active {
-      background-color: red;
-  } 
-
-  #concert-buttonThree{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonThree:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonThree:active {
-      background-color: red;
-  } 
-
-  #concert-buttonFour{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonFour:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonFour:active {
-      background-color: red;
-  } 
-
-  #concert-buttonFive{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonFive:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonFive:active {
-      background-color: red;
-  } 
-
-  #concert-buttonSix{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonSix:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonSix:active {
-      background-color: red;
-  } 
-
-  #concert-buttonSeven{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonSeven:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonSeven:active {
-      background-color: red;
-  } 
-
-  #concert-buttonEight{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonEight:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonEight:active {
-      background-color: red;
-  } 
-
-
-  #concert-buttonNine{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonNine:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonNine:active {
-      background-color: red;
-  } 
-  #concert-buttonTen{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonTen:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonTen:active {
-      background-color: red;
-  } 
-
-  #concert-buttonEleven{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonEleven:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonEleven:active {
-      background-color: green;
-  } 
-
-
-  #concert-buttonTwelve{
-    display: inline-block;
-    margin: 0 10px 10px 0;
-    padding: 15px 45px;
-    font-size: 16px;
-    font-family: Helvetica;
-    line-height: 1.8;
-    border-color: #27496d;
-  } 
-  
-  #concert-buttonTwelve:hover {
-      background-color: #346392;
-      text-shadow: -1px 1px #27496d;
-      font-family: 'New Rocker', cursive;
-      
-  }
-  
-  #concert-buttonTwelve:active {
-      background-color: red;
-  } 
 
   .beer-holder{
       
@@ -330,9 +91,22 @@ input {
       background-color: white;
   }
 
- 
+  .modal-body {
+      text-align: center;
+  }
 
+ .venue {
+     text-align: center;
+     margin-left: auto;
+     margin-right: auto;
+ }
 
-
+ .venue-details {
+     background-color: white;
+     border-radius: 5px;
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 20px;
+     padding: 10px;
+ }
 
 

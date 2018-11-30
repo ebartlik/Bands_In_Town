@@ -1,5 +1,5 @@
 //Reads the HTML before reading the javascript
-$(document).ready(function () {
+$(document).ready (function () {
 
   //Initializing firebase
   var config = {
@@ -16,34 +16,35 @@ $(document).ready(function () {
 //Create variable to reference the database
   var dataRef = firebase.database();
 
+
+  // Execute a function when the user presses a key on the keyboard
+  $("body").keypress(function(e){
+    var key = e.which; // store key in variable
+    // Number 13 is the "Enter" key on the keyboard
+    if (key == 13){
+      //run on click function
+      $("#letsRock").click();
+      return false;
+    }
+
+  });
+
+
 //When you click the "Let's Rock" Button...
   $("#letsRock").on("click", function (event) {
-     $(".jumbotron").empty();
-    
-
-    
    // prevent form from submitting
     event.preventDefault();
     //Store value that user typed into variable artist
     var artist = $("#artist").val().trim();
-
-    console.log(artist);
+    console.log(artist +"ARTIST");
 
     var proxyURL = 'https://shielded-hamlet-43668.herokuapp.com/';
     //Are we still using this??
     var queryURL1 = 'http://beermapping.com/webservice/loccity/1cd5db8a402574bb7ecab4285b88793f/jersey+city&s=json'
-    // var queryURL1 = 'http://beermapping.com/webservice/loccity/1cd5db8a402574bb7ecab4285b88793f/jersey+city&s=json'
     var queryURL2 = 'http://rest.bandsintown.com/artists/' + artist + '/events?app_id=1f631e0138387b85bc49eb32aa23ea48&artistname= ' + artist
-    //var queryURL2 = 'http://rest.bandsintown.com/Drake/events?app_id=1f631e0138387b85bc49eb32aa23ea48&artistname=Drake' 
-    // console.log(queryURL2);
 
 
-    //AJAX call for beermapping, are we still using this???
-    $.ajax({
-      url: proxyURL + queryURL1,
-      method: "GET",
-      dataType: "xml",
-    }).then(function (response) { });
+
 
     //AJAX call to Bands in Town API
     $.ajax({
@@ -51,276 +52,93 @@ $(document).ready(function () {
       method: "GET"
       // dataType: "xml",
     }).then(function (response) {
-      console.log(response);
+      // console.log(response);
+      //If query returns no results
+      if (response.length === 0){
+        //Clear out previous contents of modal
+        $(".modal-body").html("");
+        //Add message to Modal
+        $(".modal-body").text("There Are No Upcoming Events");
 
+      }
 
-      //Log Cities to Console
-      for (i = 0; i < 12; i++) {
+      for (i = 0; i < 8; i++) {
+        console.log(response[i].venue.name);
         console.log(response[i].venue.city);
+        console.log(response[i].venue.datetime);
       }
 
-      //Log Concert Dates and Times to Console
-      for (j = 0; j < 12; j++) {
-        console.log(response[j].datetime);
-      }
-
-      //Log venue names to Console
-      for (k = 0; k < 12; k++) {
-        console.log(response[k].venue.name);
-      }
-
-      //Log Latitude to Console
-      for (l = 0; l < 12; l++) {
-        console.log(response[l].venue.latitude);
-      }
-
-      //Log Longitude to Console
-      for (m = 0; m < 12; m++) {
-       
+      //Store JSON strings into variables
+      var cityDateTimeOne = JSON.stringify('<b>Venue:</b> ' + (response[0].venue.name) + '<br>' + ' <b>City:</b> ' + response[1].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[1].datetime) + '<br>';
+      console.log(cityDateTimeOne);
+      var cityDateTimeTwo = JSON.stringify('<b>Venue:</b> ' + (response[1].venue.name) + '<br>' + ' <b>City:</b> ' + response[1].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[1].datetime) + '<br>';
+      var cityDateTimeThree = JSON.stringify('<b>Venue:</b> ' + (response[2].venue.name) + '<br>' + ' <b>City:</b> ' + response[2].venue.city) + '<br>' + ' <b>Date/Time:</b>: ' + (response[2].datetime) + '<br>';
+      var cityDateTimeFour = JSON.stringify('<b>Venue:</b> ' + (response [3].venue.name) + '<br>' + ' <b>City:</b> ' + response[3].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[3].datetime) + '<br>';
+      var cityDateTimeFive = JSON.stringify('<b>Venue:</b> ' + (response[4].venue.name) + '<br>' + ' <b>City:</b> ' + response[4].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[4].datetime) + '<br>';
+      var cityDateTimeSix = JSON.stringify('<b>Venue:</b> ' + (response[5].venue.name) + '<br>' + ' <b>City:</b> ' + response[5].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[5].datetime) + '<br>';
+      var cityDateTimeSeven = JSON.stringify('<b>Venue:</b> ' + (response[6].venue.name) + '<br>' + ' <b>City:</b> ' + response[6].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[6].datetime) + '<br>';
+      var cityDateTimeEight = JSON.stringify('<b>Venue:</b> ' + (response[7].venue.name) + '<br>' + ' <b>City:</b> ' + response[7].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[7].datetime) + '<br>';
+      // var cityDateTimeNine = JSON.stringify('<b>Venue:</b> ' + (response[8].venue.name) + '<br>' + ' <b>City:</b> ' + response[8].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[8].datetime) + '<br>';
+      // var cityDateTimeTen = JSON.stringify('<b>Venue:</b> ' + (response[9].venue.name) + '<br>' + ' <b>City:</b> ' + response[9].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[9].datetime) + '<br>';
+      // var cityDateTimeEleven = JSON.stringify('<b>Venue:</b> ' + (response[10].venue.name) + '<br>' + ' <b>City:</b> ' + response[10].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[10].datetime) + '<br>';
+      // var cityDateTimeTwelve = JSON.stringify('<b>Venue:</b> ' + (response[11].venue.name) + '<br>' + ' <b>City:</b> ' + response[11].venue.city) + '<br>' + ' <b>Date/Time:</b> ' + (response[11].datetime) + '<br>';
       
-      // datetimeConverted = moment("2010-01-01T05:06:07", ["YYYY", moment.ISO_8601]);
-      
-      console.log(dateTime);
-      }
-
-     
-      //Convert JSON data to string objects
-      var city = JSON.stringify(response[i].venue.city);
-      console.log(city + "testing city");
-      var dateTime = JSON.stringify(response[j].datetime);
-
-       var testSplit = dateTime.split('T');
-       console.log(testSplit[0]);
-
-      // var testMoment = testSplit[1].moment('HH:mm');
-      // console.log(testMoment);
-      //testSplit[0]
-      // console.log(typeof dateTime);
-      dateTime= testSplit[0];
-      console.log(dateTime);
-      var venue = JSON.stringify(response[k].venue.name);
-
-      
-      console.log(response[m].venue.longitude);
-    //   var dateTimeConverted = moment(dateTime, moment.HTML5_FMT.TIME_SECONDS);
-    // console.log(dateTimeConverted._d);
-    // dateTime = dateTimeConverted._d;
-
-      //Write data to page
-      var cityDateTimeOne = JSON.stringify('City: ' + response[0].venue.city) + '<br>' + ' Date/Time: ' + (response[0].datetime)+ '<br>' + ' Venue: ' + (response[0].venue.name) + '<br>';
-      var cityDateTimeTwo = JSON.stringify('City: ' + response[1].venue.city) + '<br>' + ' Date/Time: ' + (response[1].datetime) + '<br>' + ' Venue: ' + (response[1].venue.name) + '<br>';
-      var cityDateTimeThree = JSON.stringify('City: ' + response[2].venue.city) + '<br>' + ' Date/Time: ' + (response[2].datetime) + '<br>' + ' Venue: ' + (response[2].venue.name) + '<br>';
-      var cityDateTimeFour = JSON.stringify('City: ' + response[3].venue.city) + '<br>' + ' Date/Time: ' + (response[3].datetime) + '<br>' + ' Venue: ' + (response[3].venue.name) + '<br>';
-      var cityDateTimeFive = JSON.stringify('City: ' + response[4].venue.city) + '<br>' + ' Date/Time: ' + (response[4].datetime) + '<br>' + ' Venue: ' + (response[4].venue.name) + '<br>';
-      var cityDateTimeSix = JSON.stringify('City: ' + response[5].venue.city) + '<br>' + ' Date/Time: ' + (response[5].datetime) + '<br>' + ' Venue: ' + (response[5].venue.name) + '<br>';
-      var cityDateTimeSeven = JSON.stringify('City: ' + response[6].venue.city) + '<br>' + ' Date/Time: ' + (response[6].datetime) + '<br>' + ' Venue: ' + (response[6].venue.name) + '<br>';
-      var cityDateTimeEight = JSON.stringify('City: ' + response[7].venue.city) + '<br>' + ' Date/Time: ' + (response[7].datetime) + '<br>' + ' Venue: ' + (response[7].venue.name) + '<br>';
-      var cityDateTimeNine = JSON.stringify('City: ' + response[8].venue.city) + '<br>' + ' Date/Time: ' + (response[8].datetime) + '<br>' + ' Venue: ' + (response[8].venue.name) + '<br>';
-      var cityDateTimeTen = JSON.stringify('City: ' + response[9].venue.city) + '<br>' + ' Date/Time: ' + (response[9].datetime) + '<br>' + ' Venue: ' + (response[9].venue.name) + '<br>';
-      var cityDateTimeEleven = JSON.stringify('City: ' + response[10].venue.city) + '<br>' + ' Date/Time: ' + (response[10].datetime) + '<br>' + ' Venue: ' + (response[10].venue.name) + '<br>';
-      var cityDateTimeTwelve = JSON.stringify('City: ' + response[11].venue.city) + '<br>' + ' Date/Time: ' + (response[11].datetime) + '<br>' + ' Venue: ' + (response[11].venue.name) + '<br>';
+      //Will convert time and date so that user can read it
       //  var dateTimeConverted = new Date("2018-07-26 19:00:00");
-      
+      //  dateTimeConverted = moment(dateTime).format("MM-DD-YYYY HH:mm");
       //  var dateTimeConverted = moment(dateTime,"MM-dd-yyyyTHH:MM");
-      //attempt to convert time and date
-
-
-      //  console.log(dateTimeConverted);
-      $(".jumbotron").append('<button id = concert-buttonOne>' + cityDateTimeOne);
-      $(".jumbotron").append('<button id = concert-buttonTwo>' + cityDateTimeTwo);
-      $(".jumbotron").append('<button id = concert-buttonThree>' + cityDateTimeThree);
-      $(".jumbotron").append('<button id = concert-buttonFour>' + cityDateTimeFour);
-      $(".jumbotron").append('<button id = concert-buttonFive>' + cityDateTimeFive);
-      $(".jumbotron").append('<button id = concert-buttonSix>' + cityDateTimeSix);
-      $(".jumbotron").append('<button id = concert-buttonSeven>' + cityDateTimeSeven);
-      $(".jumbotron").append('<button id = concert-buttonEight>' + cityDateTimeEight);
-      $(".jumbotron").append('<button id = concert-buttonNine>' + cityDateTimeNine);
-      $(".jumbotron").append('<button id = concert-buttonTen>' + cityDateTimeTen);
-      $(".jumbotron").append('<button id = concert-buttonEleven>' + cityDateTimeEleven);
-      $(".jumbotron").append('<button id = concert-buttonTwelve>' + cityDateTimeTwelve);
-
-
-
-
-
-      //push latitude and lonngitude to array on click
-      var location = [];
-
-      $('#concert-buttonOne').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[0].venue.longitude);
-        location.push(response[0].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-
-      });
-      $('#concert-buttonTwo').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[1].venue.longitude);
-        location.push(response[1].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-      $('#concert-buttonThree').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[2].venue.longitude);
-        location.push(response[2].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-
-
-      $('#concert-buttonFour').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[3].venue.longitude);
-        location.push(response[3].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-
-
-      $('#concert-buttonFive').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[4].venue.longitude);
-        location.push(response[4].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-      $('#concert-buttonSix').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[5].venue.longitude);
-        location.push(response[5].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-
-      $('#concert-buttonSeven').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[6].venue.longitude);
-        location.push(response[6].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-
-      $('#concert-buttonEight').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[7].venue.longitude);
-        location.push(response[7].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-
-      $('#concert-buttonNine').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[8].venue.longitude);
-        location.push(response[8].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-
-      $('#concert-buttonTen').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[9].venue.longitude);
-        location.push(response[9].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-
-      $('#concert-buttonEleven').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[10].venue.longitude);
-        location.push(response[10].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-
-      $('#concert-buttonTwelve').on("click", function (event) {
-
-        event.preventDefault();
-        location.length = 0;
-        location.push(response[11].venue.longitude);
-        location.push(response[11].venue.latitude);
-
-        console.log(location);
-
-        $('.beer-holder').html(location);
-      });
-
-    });
-
-    $("body").on("click","#letsRock", function(){
-      console.log("testing");
-      //Store the typed in value to variable location
-      var locationInput = $("#artist").val().trim();
-      //Replace spaces in location string with +
-      locationInput.replace(" ","+");
-      //plug location value into google map src and replace the original src in the html
-      $("#google-map").attr("src","https://www.google.com/maps/embed/v1/search?key=AIzaSyBbmoAi4qVWUugXB3-QpKR_kdAhtalKGI4&q=+In+" + locationInput);
-    });
-   
-   });
   
+      //Clear any previous JSON results from display
+      $(".modal-body").html("");
+
+      //Display JSON string variables as buttons and append them to page
+      
+      $(".modal-body").append('<button id = concert-buttonOne data-venue-name=' + response[0].venue.name + '" data-venue-city="' + response[0].venue.city + '" data-venue-time="' + response[0].datetime + '" class="venue-btn">' + cityDateTimeOne);
+      $(".modal-body").append('<button id = concert-buttonTwo data-venue-name="' + response[1].venue.name + '" data-venue-city="' + response[1].venue.city + '" data-venue-time="' + response[1].datetime + '" class="venue-btn">' + cityDateTimeTwo);
+      $(".modal-body").append('<button id = concert-buttonThree data-venue-name="' + response[2].venue.name + '" data-venue-city="' + response[2].venue.city + '" data-venue-time="' + response[2].datetime + '" class="venue-btn">' + cityDateTimeThree);
+      $(".modal-body").append('<button id = concert-buttonFour data-venue-name="' + response[3].venue.name + '" data-venue-city="' + response[3].venue.city + '" data-venue-time="' + response[3].datetime + '" class="venue-btn">' + cityDateTimeFour);
+      $(".modal-body").append('<button id = concert-buttonFive data-venue-name="' + response[4].venue.name + '" data-venue-city="' + response[4].venue.city + '" data-venue-time="' + response[4].datetime + '" class="venue-btn">' + cityDateTimeFive);
+      $(".modal-body").append('<button id = concert-buttonSix data-venue-name="' + response[5].venue.name + '" data-venue-city="' + response[5].venue.city + '" data-venue-time="' + response[5].datetime + '" class="venue-btn">' + cityDateTimeSix);
+      $(".modal-body").append('<button id = concert-buttonSeven data-venue-name="' + response[6].venue.name + '" data-venue-city="' + response[6].venue.city + '" data-venue-time="' + response[6].datetime + '" class="venue-btn">' + cityDateTimeSeven);
+      $(".modal-body").append('<button id = concert-buttonEight data-venue-name="' + response[7].venue.name + '" data-venue-city="' + response[7].venue.city + '" data-venue-time="' + response[7].datetime + '" class="venue-btn">' + cityDateTimeEight);
+      // $(".modal-body").append('<button id = concert-buttonNine data-venue-name="' + response[8].venue.name + '" data-venue-city="' + response[8].venue.city + '" data-venue-time="' + response[8].datetime + '" class="venue-btn">' + cityDateTimeNine);
+      // $(".modal-body").append('<button id = concert-buttonTen data-venue-name="' + response[9].venue.name + '" data-venue-city="' + response[9].venue.city + '" data-venue-time="' + response[9].datetime + '" class="venue-btn">' + cityDateTimeTen);
+      // $(".modal-body").append('<button id = concert-buttonEleven data-venue-name="' + response[10].venue.name + '" data-venue-city="' + response[10].venue.city + '" data-venue-time="' + response[10].datetime + '" class="venue-btn">' + cityDateTimeEleven);
+      // $(".modal-body").append('<button id = concert-buttonTwelve data-venue-name="' + response[11].venue.name + '" data-venue-city="' + response[11].venue.city + '" data-venue-time="' + response[11].datetime + '" class="venue-btn">' + cityDateTimeTwelve);
+
+
+    });//AJAX END
+
+    //When you click on a venue
+    $("body").on("click",".venue-btn", function(){
+      //Empty previously selected venue
+      $(".venue").empty();
+      //capture Venue's city in a variable
+      var city = $(this).attr("data-venue-city");
+      //capture Venue's name in a variable
+      var venue = $(this).attr("data-venue-name");
+      //Vapute concert's time in a variable
+      var time = $(this).attr("data-venue-time");
+      //replace any spaces in the city name to prepare it to be plugged into google maps URL
+      city.replace(" ","+");
+      //plug city value with replaced spaces into google map src and replace the original src in the html
+      $("#google-map").attr("src","https://www.google.com/maps/embed/v1/search?key=AIzaSyBbmoAi4qVWUugXB3-QpKR_kdAhtalKGI4&q=Bars+In+" + city);
+      //Hide the modal
+      $("#venue-modal").modal("hide");
+      //Make the "venue" div appear on the html with the following info....
+      $(".venue").append("<p class='selected-venue'>Selected Venue</p>");
+      var venueDiv = $("<div>").attr("class","venue-details");
+      venueDiv.html(
+        "<p><b>" + venue + "</b></p>" + 
+        "<p><i>" + city + "</i></p>" + 
+        "<p>" + time + "</p>");
+      $(".venue").append(venueDiv);
+
+    });//Venue button click function
+   
+   });//Let's Rock click function end
 
   });
-
-
-
-
-
 
 
 
